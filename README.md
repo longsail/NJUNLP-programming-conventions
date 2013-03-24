@@ -32,3 +32,7 @@ NJUNLP-programming-conventions
 ##chap07##
 
 这里即将写的是linux环境下的一些使用命令
+
+##cha08##
+
+这里即将写的是Latex安装，使用以及一些常见命令
