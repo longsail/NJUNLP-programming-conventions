@@ -33,6 +33,10 @@ NJUNLP-programming-conventions
 
 这里即将写的是linux环境下的一些使用命令
 
-##cha08##
+##chap08##
 
 这里即将写的是Latex安装，使用以及一些常见命令
+
+##chap09##
+
+这里即将写的是关于Markdown语言的入们介绍
