@@ -1,3 +1,14 @@
+appendix
+body
+figures
+preface
+setup
+*~
+*.swp
+*.ini
+*.bst
+*.gz
+*.thm
 *.acn
 *.acr
 *.alg

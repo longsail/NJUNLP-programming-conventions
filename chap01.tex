@@ -1,0 +1,104 @@
+% !TEX TS-program = XeLaTeX
+% !TEX encoding = UTF-8 Unicode
+
+\chapter{命名规范}
+\label{chap01}
+
+从建立项目到书写每一行代码，无时无刻不需要进行各种命名。命名规范给出了各类命名任务的基本命名规则，其目的是使程序具有更好的可读性，从而更易于理解、重用和维护。下面首先给出不受限于语言的通用命名规范，再针对部分语言中的特殊情况（如Java中的包，C\#中的名空间等）给出相应的规范。
+
+\section{通用命名规范}
+
+\subsection{基本规则}
+常用的命名单位包括类、接口、变量、常量、方法等。命名应采用大小写混合的方式，
+类名和接口名首字母大写，变量名和方法名首字母小写；命名由多个单词构成时，后续单词首字母大写。
+变量名不应该以下划线或\$开头。常量的命名采用全部字母大写，单词间用下划线隔开。
+
+示例如下：
+\begin{enumerate}
+
+\item \textcolor{blue}{类名~~~~~~~~~~~~~~~~~~~~~~~~~Raster~~~~~~~~~~~~~~~~~~~~~~~~~ImageSprite}
+\item \textcolor{blue}{接口名~~~~~~~~~~~~~~~~~~~~~Storing~~~~~~~~~~~~~~~~~~~~~~~~RasterDelegate}
+\item \textcolor{blue}{方法名~~~~~~~~~~~~~~~~~~~~~getMax()~~~~~~~~~~~~~~~~~~~~~runFast()}
+\item \textcolor{blue}{变量名~~~~~~~~~~~~~~~~~~~~~myWidth~~~~~~~~~~~~~~~~~~~~~fruitShape}
+\item \textcolor{blue}{常量名~~~~~~~~~~~~~~~~~~~~~MIN\_WIDTH~~~~~~~~~~~~~MAX\_WIDTH}
+\end{enumerate}
+%使用模版的第一步当然是修改您的个人信息。与个人信息有关的内容位
+%于~{/preface/cover.tex}~文件中。对照着模版内容改就好了，没有什么难度。填
+%写专业、姓名和导师的时候注意添加适当空格，也就$\sim$字符，以保持段落对齐。
+%这里的默认完成时间是最后一次编译main.tex的日期。
+
+\subsection{命名的选择}
+命名应在不使用注释的情况下也能较好的体现出作者的意图，应该告诉代码阅读人员，
+它们为什么会存在，做什么事情。类、接口、变量、常量的命名应使用名词，方法的命名应使用动词。
+名称必须是可读的，这样会方便讨论。
+
+示例如下：
+\begin{enumerate}
+\item  \textcolor{blue}{消逝的时间~~~~~~~~~~~~~~~elapsedTime}
+\item  \textcolor{blue}{生成时间戳~~~~~~~~~~~~~~~generateTimeStamp}
+\end{enumerate}
+
+\subsection{命名的长度}
+避免使用单字命名。在我们阅读或者修改代码的过程中，有时候需要查找变量名或者常量名，然而单字母名称和数字常量很难在一个代码文件中找到，这也造成了相当程度的不便。      
+
+若变量或常量可能在代码中多处用到，则应赋予其便于搜索的名称，建议命名长度与作用域大小相对应,即作用域越大命名越长。同时，避免命名超长(原则上不应该超过20个字符)。
+
+示例如下：
+\begin{enumerate}
+%\begin{lstlisting}
+\item  \textcolor{blue}{变量名~~~~~~~~~~~~~~~~~~~~~~~~~realDaysPerYear}
+\item  \textcolor{blue}{常量名~~~~~~~~~~~~~~~~~~~~~~~~~WORK\_DAYS\_PER\_WEEK}
+%\end{lstlisting}
+\end{enumerate}
+
+\subsection{慎用缩写}
+请尽量少使用意义不明确的缩写，如果要用到缩写，尽量按照大家公认的缩写名称来使用，并在使用时用注释进行说明。
+
+示例如下：
+\begin{enumerate}
+%\begin{lstlisting}
+\item  \textcolor{blue}{缩写规则~~~~~~~~~~~~~~~~~~~~~~~NO.代表number}
+\item  \textcolor{blue}{缩写规则~~~~~~~~~~~~~~~~~~~~~~~ID.代表identification}
+%\end{lstlisting}
+\end{enumerate}
+
+\section{语言特有的命名}
+
+\subsection{Java}
+
+\begin{enumerate}
+\item 包
+
+包的命名应全部使用小写的ASCII字母。由于互联网上的域名是不会重复的，所以一般采用在互联网上的域名作为包的惟一前缀。
+NLP组的包命名前缀规范是edu.nju.nlp.* 。对应的代码目录结构是edu->nju->nlp->*。
+包名的后续部分根据不同机构各自内部的命名规范而不尽相同，NLP组的包后缀部分命名应同样遵守有意义、可理解的原则，具体要求可参照1.1节相关内容。
+
+示例如下：
+%\begin{enumerate}[(a)]
+%\item  
+
+(a) \textcolor{blue}{com.sun.eng }  
+%\item  
+
+(b) \textcolor{blue}{edu.nju.nlp.keyword}
+%\end{enumerate}
+\end{enumerate}
+
+\subsection{C\#}
+
+\begin{enumerate}
+\item 名空间
+
+名空间命名包括：CompanyName.ProjectName.Feature。其中，CompanyName：公司名称；Project Name：该项目缩写；Feature：实现的功能。每个单词的首字母需要大写。需要注意的是名空间和类不能使用同样的名字。NLP组的名空间中CompanyName为NJUNLP。
+项目名和特征名的命名应同样遵守有意义、可理解的原则，具体要求可参照1.1节相关内容。
+
+示例如下：
+%\begin{enumerate}[(a)]
+%\item  
+
+(a) \textcolor{blue}{Microsoft.office.ui}
+%\item  
+
+(b) \textcolor{blue}{NJUNLP.Keyword.Extrator}
+%\end{enumerate}
+\end{enumerate}

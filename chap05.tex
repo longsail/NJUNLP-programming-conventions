@@ -1,0 +1,905 @@
+% !TEX TS-program = XeLaTeX
+% !TEX encoding = UTF-8 Unicode
+
+\chapter{附录}
+\label{chap05}
+
+\section{Java文档注释}
+
+\subsection{部分标签示例}
+
+\begin{enumerate}
+\item @version
+
+该标签的格式如下：
+
+\begin{lstlisting}
+@version version-information
+\end{lstlisting}
+其中，”version-information”可以是任何你认为适合包含在版本说明中的重要信息。如果Javadoc命令使用了”-version”标记,那么就可以从生成的HTML文档中提取出版本信息。
+
+\item @author
+
+该标签的格式如下：
+\begin{lstlisting}
+@author author-information
+\end{lstlisting}
+其中，”author-information”可以包括电子邮件地址或者其他任何适宜的信息。如果Javadoc命令行使用了”-author”标记，那么就可以从生成的HTML文档中提取出作者信息。可以使用多个标签，以便列出所有的作者，但是它们必须连续放置。全部作者信息会合并到同一段落，置于生成的HTML中。
+
+\item	 @throws
+
+该标签的格式如下：
+\begin{lstlisting}
+@throws fully-qualified-class-name description
+\end{lstlisting}
+“异常” 它们是由于某个方法调用失败而抛出的对象。尽管在调用一个方法时，只出现一个异常对象，但是某个特殊方法可能会出产生任意多个不同类型的异常，所有这些异常都需要进行说明。其中fully-qualified-class-name给出一个异常类的无歧义的名字，而该异常类常在别处定义。description告诉你为什么此特殊类型的异常会在方法调用中出现
+
+\item @param
+
+该标签的格式如下：
+\begin{lstlisting}
+@param parameter-name description
+\end{lstlisting}
+其中，”parameter-name”是方法的参数列表中的标识符，description是可延续数行的文本，终止于新的文档标签出现之前。可以使用任意多个这种标签，每个参数都有一个这样的标签。
+
+\item @return
+
+该标签的格式如下：
+\begin{lstlisting}
+@return descrption
+\end{lstlisting}
+其中，description用来描述返回值的含义，可以延续数行。
+
+\item @see
+
+该标签的格式如下：
+\begin{lstlisting}
+@see class name
+@see fully-qualified-classname
+@see fully-qualified-classname\#method-name
+\end{lstlisting}
+@see标签允许用户引用其它类的文档。Javadoc会在其生成的HTML文件中，通过@see标签链接到其它文档。
+
+\item @since(optional)
+
+该标签允许你指定程序代码最早使用的版本，可以在HTML Java文档中看到它被用来指定所用的JDK版本的情况
+
+\item	 @deprecated(optional)
+
+该标签用于指出一些旧特性已由改进的新特性所取代，建议用户不要再使用这些旧特性，因为在不久的将来它们很可能会被删除。如果使用一个标记为@deprecated的方法，则会引起编译器的警告
+\end{enumerate}
+
+若想了解更多有关文档注释和Javadoc的详细资料，参见Javadoc的主页：
+http://www.oracle.com/technetwork/Java/Javase/documentation/index-jsp-135444.htm
+
+\newpage
+\subsection{程序示例}
+
+这里我们假设使用开源协议中的GPL协议，遵守命名规范和文档注释要求。
+
+示例如下：
+\begin{figure}[htpd] 
+ \centering 
+ \begin{minipage}[t]{0.5\textwidth} 
+   \centering 
+   \includegraphics[width=7cm]{java.jpg} 
+   %\caption{html示例} 
+ \end{minipage}% 
+ \begin{minipage}[t]{0.5\textwidth} 
+   \centering 
+   \includegraphics[width=7cm]{java-2.jpg} 
+   %\caption{html示例} 
+ \end{minipage}% 
+ \caption{ java文件注释}
+\end{figure}
+
+\subsection{HTML文档}
+
+根据5.1.2Java文档注释生成的HTML文档
+
+示例如下：
+
+\begin{figure}[htpd] 
+ \centering 
+ \begin{minipage}[t]{0.5\textwidth} 
+   \centering 
+   \includegraphics[width=7cm]{html-1.jpg} 
+   %\caption{html示例} 
+ \end{minipage}% 
+ \begin{minipage}[t]{0.5\textwidth} 
+   \centering 
+   \includegraphics[width=7cm]{html-2.jpg} 
+   %\caption{html示例} 
+ \end{minipage}% 
+ \caption{ html文件一}
+\end{figure}
+
+\begin{figure}[htpd]
+  \centering 
+  \begin{minipage}[t]{0.5\textwidth} 
+    \centering 
+    \includegraphics[width=7cm]{html-3.jpg} 
+    %\caption{html示例} 
+  \end{minipage}% 
+  \begin{minipage}[t]{0.5\textwidth} 
+    \centering 
+    \includegraphics[width=7cm]{html-4.jpg} 
+    %\caption{html示例} 
+  \end{minipage}% 
+  \caption{ html文件二}
+\end{figure}
+
+\newpage
+\section{C\#文档注释}
+
+\subsection{部分标记示例}
+
+\begin{enumerate}
+\item <summary>
+
+该标记格式如下：
+\begin{lstlisting}
+<summary>description</summary>
+\end{lstlisting}
+参数description：对象的摘要。<summary> 标记应当用于描述类型或类型成员。使用 <remarks> 添加针对某个类型说明的补充信息。
+
+示例如下：
+\begin{lstlisting}[language=java]
+// compile with: /doc:DocFileName.xml 
+/// text for class TestClass
+public class TestClass{
+    /// <summary>doWork is a method in the TestClass class.
+    /// <para>Here's how you could make a second paragraph 
+    ///  in a description. <see cref="System.Console.WriteLie
+    ///  (System.String)"/> 
+    ///  for information about output statements.</para>
+    /// <seealso cref="TestClass.Main"/>
+    /// </summary>
+    public static void doWork(int number){ 
+    }
+    /// text for Main
+    static void Main(){ 
+    }
+}
+\end{lstlisting}
+
+\item <remarks>
+
+该标记的格式如下：
+\begin{lstlisting}
+<remarks>description</remarks>
+\end{lstlisting}
+参数 description ：成员的说明。<remarks> 标记用于添加有关某个类型的信息，从而补充由 <summary> 所指定的信息。此信息显示在对象浏览器中。
+
+示例如下：
+\begin{lstlisting}[language=java]
+// compile with: /doc:DocFileName.xml 
+/// <summary>
+/// You may have some primary information about this class.
+/// </summary>
+/// <remarks>
+/// You may have some additional information about this class.
+/// </remarks>
+public class TestClass{
+/// text for Main
+    static void Main(){ 
+    }
+}
+\end{lstlisting}
+
+\item <param>
+
+该标记的格式如下：
+\begin{lstlisting}
+<param name='name'>description</param>
+\end{lstlisting}
+参数name ：方法参数名。将此名称用双引号括起来 (" ")。参数Description: 参数说明。<param> 标记应当用于方法声明的注释中，以描述方法的一个参数。
+
+示例如下：
+\begin{lstlisting}[language=java]
+// compile with: /doc:DocFileName.xml 
+/// text for class TestClass
+public class TestClass{
+/// <param name="int1">Used to indicate status.</param>
+    public static void doWork(int int1){ 
+   }
+/// text for Main
+    static void Main(){ 
+    }
+}
+\end{lstlisting}
+
+\item <typeparamref>
+
+该标记的格式如下： 
+\begin{lstlisting}
+<typeparamref name="name">description</typeparamref>
+\end{lstlisting}
+参数name 类型参数的名称。将此名称用双引号括起来 (" ")。
+
+示例如下：
+\begin{lstlisting}[language=java]
+// compile with: /doc:DocFileName.xml 
+/// comment for class
+public class TestClass{
+    /// <summary> 
+    /// Creates a new array of arbitrary type <typeparamref 
+    ///name="T"/>
+    /// </summary>
+    /// <typeparam name="T">The element type of the array
+    ///</typeparam>
+    public static T[] mkArray<T>(int n){
+        return new T[n];
+    }
+}
+\end{lstlisting}
+
+\item <exception>
+ 
+该标记的格式如下：
+\begin{lstlisting}
+<exception cref="member">description</exception>
+\end{lstlisting}
+参数cref = "member": 对可从当前编译环境中获取的异常的引用。编译器检查到给定异常存在后，将 member 转换为输出 XML 中的规范化元素名。必须将 member 括在双引号 (" ") 中。<exception> 标记使您可以指定哪些异常可被引发。此标记可用在方法、属性、事件和索引器的定义中。
+
+示例如下：
+\begin{lstlisting}[language=java]
+// compile with: /doc:DocFileName.xml 
+/// comment for class
+public class EClass : System.Exception{
+// class definition...
+}
+/// comment for class
+class TestClass{
+    /// <exception cref="System.Exception">Thrown when...
+    /// </exception>
+    public void doSomething(){
+        try{ 
+        }
+    catch (EClass){ 
+    }
+}
+}
+\end{lstlisting}
+
+\item <returns>
+
+该标记的格式如下：
+\begin{lstlisting}
+<returns>description</returns>
+\end{lstlisting}
+参数 description：返回值的说明。<returns> 标记应当用于方法声明的注释，以描述返回值。
+
+示例如下：
+\begin{lstlisting}[language=java]
+// compile with: /doc:DocFileName.xml 
+/// text for class TestClass
+public class TestClass{
+/// <returns>Returns zero.</returns>
+    public static int getZero(){
+        return 0;
+    }
+    /// text for Main
+    static void Main(){ 
+    }
+}
+\end{lstlisting}
+
+\item <value>
+
+该标记的格式如下： 
+\begin{lstlisting}
+<value>property-description</value>
+\end{lstlisting}
+参数property-description: 属性的说明。<value> 标记可以描述属性所代表的值。请注意，当在 Visual Studio .NET 开发环境中通过代码向导添加属性时，它将会为新属性添加 <summary> 标记。然后，应该手动添加 <value> 标记以描述该属性所表示的值。
+
+示例如下：
+\begin{lstlisting}[language=java]
+// compile with: /doc:DocFileName.xml 
+/// text for class Employee
+public class Employee{
+    private string aName;
+    /// <summary>The Name property represents the 
+    /// employee's name.</summary>
+    /// <value>The Name property gets/sets the aName data 
+    ///  member.</value>
+    public string Name{
+        get{ 
+	       return aName; 
+	   }
+        set{ 
+               aName = value; 
+	   }
+    	}
+}
+/// text for class MainClass
+public class MainClass{
+/// text for Main
+    static void Main(){ 
+    }
+}
+\end{lstlisting}
+
+\item <c>(optional)
+
+该标记的格式如下：
+\begin{lstlisting}
+<c>text</c>
+\end{lstlisting}
+参数text: 希望将其指示为代码的文本。<c>标记提供了一种将说明中的文本标记为代码的方法。使用 <code> 将多行指示为代码。
+
+示例如下：
+\begin{lstlisting}[language=java]
+// compile with: /doc:DocFileName.xml 
+/// text for class TestClass
+public class TestClass{
+/// <summary><c>doWork</c> is a method in the 
+/// <c>TestClass</c> class.
+    /// </summary>
+    public static void doWork(int int1){ 
+    }
+    /// text for Main
+    static void Main(){ 
+    }
+}
+\end{lstlisting}
+
+\item <code>(optional)
+
+该标记的格式如下：
+\begin{lstlisting}
+<code>content</code> (optional)
+\end{lstlisting}
+参数content: 希望将其标记为代码的文本。<code> 标记提供了一种将多行指示为代码的方法。
+
+\item <example>(optional)
+
+该标记的格式如下：
+\begin{lstlisting}
+<example>description</example>
+\end{lstlisting}
+参数description:代码示例的说明。 使用 <example> 标记可以指定使用方法或其他库成员的示例。这通常涉及使用 <code> 标记。
+
+示例如下：
+\begin{lstlisting}[language=java]
+// compile with: /doc:DocFileName.xml 
+/// text for class TestClass
+public class TestClass{
+/// <summary>
+/// The getZero method.
+/// </summary>
+/// <example> This sample shows how to call the 
+///  getZero method.
+/// <code>
+/// class TestClass 
+/// {
+///     static int Main() 
+///     {
+///         return getZero();
+///     }
+/// }
+/// </code>
+/// </example>
+    public static int getZero(){
+        return 0;
+    }
+}
+\end{lstlisting}
+
+\item <include>(optional)
+
+该标记的格式如下：
+\begin{lstlisting}
+<include file='filename' path='tagpath[@name="id"]' />
+\end{lstlisting}
+参数 filename: 包含文档的文件名。该文件名可用路径加以限定。将 filename 括在单引号 (' ') 中。tagpath：filename 中指向标记 name 的标记路径。将此路径括在单引号中 (' ')。name：注释前边的标记中的名称说明符；name 具有一个 id。id：位于注释之前的标记的 ID。将此 ID 括在双引号中 (" ")。
+<include> 标记可以引用描述源代码中类型和成员的另一文件中的注释。这是除了将文档注释直接置于源代码文件中之外的另一种可选方法。<include> 标记使用 XML XPath 语法。有关自定义 <include> 使用的方法，请参见 XPath 文档。
+
+示例如下：
+\begin{lstlisting}[language=java]
+// compile with: /doc:DocFileName.xml 
+/// <include file='xml_include_tag.doc' path='MyDocs/MyMembers[
+/// @name="test"]/*' />
+class Test{
+    static void Main(){ 
+    }
+}
+/// <include file='xml_include_tag.doc' path='MyDocs/MyMembers[
+///  @name="test2"]/*' />
+class Test2{
+    public void test(){ 
+    }
+}
+\end{lstlisting}
+
+\item <paramref>(optional)
+
+该标记的格式如下：
+\begin{lstlisting}
+<paramref name="name"/>
+\end{lstlisting}
+参数 name :要引用的参数名。将此名称用双引号括起来 (" ")。<paramref> 标记提供了指示代码注释中的某个单词（例如在 <summary> 或 <remarks> 块中）引用某个参数的方式。可以处理 XML 文件来以不同的方式格式化此单词，比如将其设置为粗体或斜体。
+
+示例 如下：
+\begin{lstlisting}[language=java]
+// compile with: /doc:DocFileName.xml 
+/// text for class TestClass
+public class TestClass{
+/// <summary>doWork is a method in the TestClass class.  
+/// The <paramref name="int1"/> parameter takes a 
+///  number.
+/// </summary>
+    public static void doWork(int number){ 
+    }
+    /// text for Main
+    static void Main(){ 
+    }
+}
+\end{lstlisting}
+
+\item <permission>(optional)
+
+该标记的格式如下：
+\begin{lstlisting}
+<permission cref="member">description</permission>
+\end{lstlisting}
+参数 cref = "member" 对可以通过当前编译环境进行调用的成员或字段的引用。编译器检查到给定代码元素存在后，将 member 转换为输出 XML 中的规范化元素名。必须将 member 括在双引号 (" ") 中。
+
+description：对成员的访问的说明。<permission> 标记使得你可以将成员的访问记入文档。使用 PermissionSet 类可以指定对成员的访问。
+
+示例如下：
+\begin{lstlisting}[language=java]
+// compile with: /doc:DocFileName.xml 
+class TestClass{
+/// <permission cref="System.Security.PermissionSet">
+/// Everyone can access this method.</permission>
+    public static void test(){ 
+    }	
+    static void Main(){ 
+    }
+}
+\end{lstlisting}
+\item <see>(optional)
+
+该标记的格式如下：
+\begin{lstlisting}
+<see cref="member"/>
+\end{lstlisting}
+参数cref = "member" 对可以通过当前编译环境进行调用的成员或字段的引用。编译器检查给定的代码元素是否存在，并将 member 传递给输出 XML 中的元素名称。应将 member 放在双引号 (" ") 中。
+
+示例 如下：
+\begin{lstlisting}[language=java]
+// compile with: /doc:DocFileName.xml 
+// the following cref shows how to specify the reference, 
+// such that,
+// the compiler will resolve the reference
+/// <summary cref="C{T}">
+/// </summary>
+class A { 
+}
+// the following cref shows another way to specify the reference, 
+// such that, the compiler will resolve the reference
+// <summary cref="C &lt; T &gt;">
+// the following cref shows how to hard-code the reference
+/// <summary cref="T:C`1">
+/// </summary>
+class B{ 
+}
+/// <summary cref="A">
+/// </summary>
+/// <typeparam name="T"></typeparam>
+class C<T>{ 
+}
+\end{lstlisting}
+\item <typeparam> (optional)
+
+该标记的格式如下：
+\begin{lstlisting}
+<typeparam name="name">description</typeparam>
+\end{lstlisting}
+参数name: 类型参数的名称。将此名称用双引号括起来 (" ")。description:类型参数的说明。
+在泛型类型或方法声明的注释中应该使用 <typeparam> 标记描述类型参数。为泛型类型或方法的每个类型参数添加标记。=
+
+\end{enumerate}
+
+\newpage
+\subsection{程序示例}
+
+这里我们假设继续使用开源协议中的GPL协议。示例程序是按照C\#命名规范和C\#文档注释要求写的。
+
+示例如下：
+\begin{figure}[htpd]
+ \centering
+ \includegraphics[scale=0.6]{CSharp-1.jpg}
+ \caption{CSharp文件注释一}
+\end{figure}
+
+\begin{figure}[htpd] 
+ \centering 
+ \begin{minipage}[t]{0.5\textwidth} 
+   \centering 
+   \includegraphics[scale=0.55]{CSharp-2.jpg} 
+   %\caption{html示例} 
+ \end{minipage}% 
+ \begin{minipage}[t]{0.5\textwidth} 
+   \centering 
+   \includegraphics[scale=0.55]{CSharp-3.jpg} 
+   %\caption{html示例} 
+ \end{minipage}% 
+ \caption{ CSharp文件注释二}
+\end{figure}
+
+\newpage	 
+\subsection{xml文档}
+
+示例如下
+
+\begin{figure}[htpd]
+  \centering 
+  \begin{minipage}[t]{0.5\textwidth} 
+    \centering 
+    \includegraphics[width=7cm]{xml-1.jpg} 
+    \caption{xml示例-1} 
+  \end{minipage}% 
+  \begin{minipage}[t]{0.5\textwidth} 
+    \centering 
+    \includegraphics[width=7cm]{xml-2.jpg} 
+    \caption{xml示例-2} 
+  \end{minipage}% 
+  \caption{ xml文件}
+\end{figure}
+
+\section{redmine使用介绍}
+
+Redmine是用Ruby开发的基于web的项目管理软件，是用Ruby On Rails框架开发的一套跨平台项目管理系统。redmine使用介绍如下所示:
+
+\subsection{新建项目}
+
+点击这里可以创建项目。如下所示，请注意在项目描述里面必须添加项目在服务器上的绝对路径。
+
+\begin{figure}[htpd]
+ \centering
+ \includegraphics[scale=0.6]{redmine-project.jpg}
+ \centering
+ \includegraphics[scale=0.6]{redmine-project-1.jpg}
+\caption{redmine-project示例}
+\end{figure}
+
+\subsection{讨论区使用}
+
+讨论区给项目成员之间提供一个交流的平台。这里可以讨论跟项目相关的问题
+
+\begin{figure}[htpd]
+ \centering
+ \includegraphics[scale=0.6]{redmine-forum.jpg}
+ \caption{redmine-forum示例1}
+\end{figure}
+
+讨论区列表页面显示的内容：
+\begin{enumerate}
+\item 话题的总数
+\item 留言的总数
+\item 最后留言的链接
+\end{enumerate}
+ 
+发起一个话题
+
+点击右上角的“新帖”链接，进入新建帖子的页面，输入主题和内容，点击创建按钮，一个新的话题就发起了。
+\begin{figure}[htpd]
+ \centering
+ \includegraphics[scale=0.6]{redmine-forum-1.jpg}
+ \caption{ redmine-forum示例2}
+\end{figure}
+
+话题里有两个可选选项：
+\begin{enumerate}
+\item 置顶
+
+如果选中，表示该话题将会在讨论区列表置顶，并加粗显示
+\item 锁定
+
+如果选中，表示该贴不允许用户跟贴
+\end{enumerate}
+
+\clearpage
+\subsection{wiki使用}
+
+WiKi是一个供多人协同写作的系统,这里可以写项目的功能，特色，更新进度。
+
+\begin{figure}[htpd]
+ \centering
+ \includegraphics[scale=0.6]{redmine-wiki.jpg}
+ \caption{redmine-wiki示例}
+\end{figure}
+
+\subsection{版本库使用}
+
+参见git一节介绍
+
+\subsection{文件使用}
+
+\begin{figure}[htpd]
+ \centering
+ \includegraphics[scale=0.6]{redmine-file.jpg}
+ \caption{redmine-file示例}
+\end{figure}
+
+这里可以上传项目需要用到的文件比如设计文档，使用文档，更新记录和readme文件。
+
+\clearpage
+\subsection{代码评审}
+
+代码评审，可以用来在同一项目的小组成员之间互相检查代码，熟悉项目，减少项目风险。点击代码评审后出现上图，接着就可以审阅代码了。
+\begin{figure}[htpd]
+ \centering
+ \includegraphics[scale=0.6]{redmine-codereview.jpg}
+ \caption{ redmine-codereview示例}
+\end{figure}
+
+\section{git使用介绍}
+
+git是开源版本控制系统，具有简单的设计、对非线性开发模式的强力支持（允许上千个并行开发的分支）、完全分布式、有能力高效管理类似Linux 内核一样的超大规模项目（速度和数据量），下面的文档将会git配置，git管理本地代码，git管理服务器代码等方面展开介绍。
+
+下面的例子中，所有标注为红色的部分需要在自己的机器上做出相应切换，例如下面例子中的，\textcolor{red}{longsail}是邹远航电脑的用户名，在操作的时候需要换成自己的电脑用户名，\textcolor{red}{mypassword}换成自己设置的密码，\textcolor{red}{project}换成自己的项目名称。其它一些切换，在下面也会有相应的说明。
+
+Git客户端可以在http://114.212.189.55:2012里下载到，登录到redmine后，点击git-client项目，然后点击版本库，然后点击Git-1.8.0-preview20121022.rar，就可以下载了。
+
+在http://114.212.189.55:2012首页有名称为test的项目，在test目录下面已经有了一个kmeans项目，大家想做测试的话，可以将项目建立在这个目录下面或者直接对这个kmeans进行操作。
+
+\subsection{使用命令介绍}
+在git的配置以及使用中将会涉及到linux和git命令操作，下面将解释这些命令的意思。
+
+\begin{enumerate}
+\item linux命令介绍
+
+\textcolor{cyan}{\$cd directory}
+
+\textcolor{green}{/* 切换到目录directory */}
+
+\textcolor{cyan}{\$ls}
+                                                              
+\textcolor{green}{/* 查看当前目录下的文件 */}
+
+\textcolor{cyan}{\$mkdir directory}                                                
+
+\textcolor{green}{/* 创建新的目录directory */}
+
+\textcolor{cyan}{\$rm file}
+                                                          
+\textcolor{green}{/* 删除文件file */}
+
+\textcolor{cyan}{\$ssh-keygen}                                                      
+
+\textcolor{green}{/* 生成公钥 */}
+
+\textcolor{cyan}{\$ssh user@server}  
+                                    
+\textcolor{green}{/* 用户user以ssh方式登录到服务器server */}
+
+\textcolor{cyan}{\$scp ~/.ssh/zouyh\_rsa.pub user@server:/home/nlpgit}
+    
+\textcolor{green}{/* 将用户zouyh机器上的公钥以user的用户名上传到服务器server（114.212.189.18）的/home/nlpgit文件夹下面 */}
+
+\textcolor{cyan}{\$cat zouyh\_rsa.pub >> ~/.ssh/authorized\_keys }
+                      
+\textcolor{green}{/* 将用户zouyh机器上产生的公钥拷贝到服务器上的authorized\_keys文件中}
+
+~~~~\textcolor{green}{   这样我们以后就可以跟服务器通信了 }
+
+\textcolor{green}{ */}
+
+\item git命令介绍
+
+a) git一般操作命令
+
+\textcolor{cyan}{\$git init}
+
+\textcolor{green}{/* 从当前目录初始化项目 */}
+
+\textcolor{cyan}{\$git config --global user.email "email@email.com" }
+
+\textcolor{green}{/* 配置个人邮箱 这里建议使用组内邮箱 */}
+
+\textcolor{cyan}{\$git config --global user.name username}
+
+\textcolor{green}{/* 配置个人用户名 这里建议使用自己名字的缩写 */}
+
+\textcolor{cyan}{\$git config --global core.editor notepad}
+
+\textcolor{green}{/* 设置默认使用的文本编辑器为记事本 如果不设置默认的编辑器是vim */}
+ 
+\textcolor{cyan}{\$git --bare init }
+
+\textcolor{green}{/* 在服务器端初始化自己的项目 */}
+
+\textcolor{cyan}{\$git status }
+
+\textcolor{green}{/* 查看哪些文件当前处于什么状态 *}
+
+\textcolor{cyan}{\$git add README }
+
+\textcolor{green}{/*使用命令git add开始跟踪一个新文件README */}
+
+\textcolor{cyan}{\$git commit -m 'initial commit'}
+
+\textcolor{green}{/* 提交更新，‘initial commit’是提交的说明 */}
+
+\textcolor{cyan}{\$git commit --amend}
+
+\textcolor{green}{/* 撤消之前的提交操作 */}
+
+\textcolor{cyan}{\$git log}
+
+\textcolor{green}{/* 按提交时间列出所有的更新，最近的更新排在最上面 */}
+
+
+b) git特殊操作命令
+
+\textcolor{cyan}{\$git clone /opt/git/project.git}
+
+\textcolor{green}{/* 克隆本地仓库 项目目录是 /opt/git/project.git */}
+
+\textcolor{cyan}{\$git remote add local\_proj /opt/git/project.git */}
+
+\textcolor{green}{/* 添加一个本地仓库local\_proj到现有Git工程,工程目录是 /opt/git/project.git */}
+
+\textcolor{cyan}{\$git clone ssh:user@server:project.git}
+
+\textcolor{green}{/* 通过SSH 克隆一个Git 仓库，user是用户名，server是服务器的ip地址 */}
+
+\textcolor{cyan}{\$git remote add origin  user@server:project.git}
+
+\textcolor{green}{/* 添加远程仓库到服务器下的目录project.git中 */}
+
+\textcolor{cyan}{\$git push  origin master}
+
+\textcolor{green}{/* 推送数据到远程仓库 */}
+
+\textcolor{green}{ */}
+ 
+\end{enumerate}
+
+\subsection{git使用配置}
+
+\begin{enumerate}
+\item git客户端 用户名和邮箱，文本编辑器设置
+
+以潘林林的配置为例，命令中global前面是两个-。在自己机器配置时候红色部分"\textcolor{red}{panll@nlp.nju.edu.cn}"、\textcolor{red}{panll}替换成自己的邮箱和用户名。
+
+\begin{lstlisting}
+$git config --global user.email "panll@nlp.nju.edu.cn"
+$git config --global user.name panll
+\end{lstlisting}
+
+可选的配置，如果对vim或者emacs不熟悉的，可以使用记事本或者其他自己熟悉的文本编辑工具，这里假设配置为记事本（notepad)
+\begin{lstlisting}
+$git config --global core.editor notepad
+\end{lstlisting}
+
+如果仅仅使用git管理本地项目，配置可以到此结束了。由于我们组使用redmine平台，涉及到网络操作，需要进行进一步的配置，如下所示：
+
+\item 生成公钥
+
+\begin{lstlisting}
+$ssh-keygen
+\end{lstlisting}
+注意：ssh-keygen这条命令执行后出现下面的提示，红色部分是需要自己输入的
+
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/longsail/.ssh/id\_rsa):\textcolor{red}{/c/Users/longsail/.ssh/id\_rsa}\\
+Enter passphrase (empty for no passphrase):\textcolor{red}{mypasswd}\\
+Enter same passphrase again:\textcolor{red}{mypasswd}
+
+补充说明：
+
+(a) /c/Users/longsail/.ssh/id\_rsa 
+
+这里是本机ssh公钥保存的位置，注意将longsail替换为自己本机的名称。
+
+(b) mypassword 
+
+是以后你跟服务器通信的密码，需要自己设置
+
+
+\item 上传公钥到服务器
+
+为了便于管理公钥，请将/c/Users/longsail/.ssh目录下面的id\_rsa.pub文件重新命名,例如，邹远航的公钥修改为\textcolor{red}{zouyh}\_rsa.pub,红色部分替换为自己的名字。
+
+下面的命令结束后要求输入密码，第一个密码输入自己设置的密码，第二个密码输入nlpgit。
+\begin{lstlisting}
+$scp ~/.ssh/zouyh_rsa.pub nlpgit@114.212.189.55:/home/nlpgit
+$ssh nlpgit@114.212.189.55
+\end{lstlisting}
+
+将密钥拷贝到服务器的 ~/.ssh/authorized\_keys文件中。
+\begin{lstlisting}
+$cat zouyh_rsa.pub >> ~/.ssh/authorized_keys
+$exit
+\end{lstlisting}
+\end{enumerate}
+
+git本机的配置完了，就可以进行网络操作了
+
+
+\subsection{git使用操作}
+
+我们可以用git来管理本地项目和服务器上的项目，在下面的介绍中，将详细介绍怎样利用git在服务器上建立项目以及对项目进行操作，从本地克隆项目和从服务器上克隆项目的操作例如提交更新，上传到远程服务器命令是相似的，就不作详细介绍了。
+
+\subsubsection{本地操作}
+
+git可以用来管理自己在本机上的代码，文档等等,使用的是本地协议(Local protocol) ，远程仓库在该协议中就是硬盘上的另一个目录。常见于团队每一个成员都对一个共享的文件系统(例如NFS )拥有访问权，抑或比较少见的多人共用同一台电脑的时候或者仅仅是自己管理自己的项目。
+
+如果使用一个共享的文件系统，就可以在一个本地仓库里克隆，推送和获取。要从这样的仓库里克隆或者将其作为远程仓库添加现有工程里，可以用指向该仓库的路径作为URL。
+
+克隆一个本地仓库，可以用如下命令完成,假设你要管理c盘git目录下的project：
+
+\textcolor{cyan}{\$git clone /c/git/project.git}
+
+其它共同操作参考git共同操作。
+
+\subsubsection{远程操作}
+
+这里我们以在服务器上建立项目和从服务器上克隆项目为例，在服务器上建立项目需要跟redmine结合起来，主要包含三个操作，服务器端操作、本地机器操作、redmine上面的操作。从服务器上克隆项目相对简单，我们将结合一个命令讲下。
+
+
+(a) 服务器端操作
+
+~~~~红色部分\textcolor{red}{project}.git请替换成自己的项目名称，比如zouyh.git(这里的命名方式不是规范的，仅仅是为了操作方便)
+\begin{lstlisting}
+$ssh nlpgit@114.212.189.55
+$cd git
+$mkdir project.git
+$cd project.git
+$git --bare init
+$exit
+\end{lstlisting}
+
+
+(b) 客户端操作
+
+~~~~从当前目录初始化,这里以新建一个空的文件目录为例，并且在新建的文件目录里面添加一个readme文件，上传到服务器。（在空目录中执行上传操作会报错，为了上传成功添加一个readme文件，仅仅是为了操作方便）。
+
+\begin{lstlisting}
+$mkdir project
+$cd project
+$git init
+$git add . 
+$vim readme
+$git add readme
+$git commit –m 'initial commit' 
+$git remote add origin nlpgit@114.212.189.55:/home/nlpgit/git
+ /project.git
+$git push origin master
+\end{lstlisting}
+
+ ~~~~完成上述操作后将会出现下面的输入密码的提示,mypasswd替换为自己设置的密码,
+
+Enter passphrase for key ‘/c/Users/longsail/.ssh/id\_rsa’:\textcolor{red}{mypasswd} 
+
+(c) redmine上的操作
+
+~~~~\textcolor{cyan}{在redmine上新建项目project}
+
+~~~~\textcolor{cyan}{点击配置-》版本库}
+
+~~~~\textcolor{cyan}{点击新建版本库，在库路径中填写：}\textcolor{red}{/home/nlpgit/git/project.git},\textcolor{cyan}{然后点击创建}
+
+~~~~\textcolor{cyan}{然后点击版本库}
+
+这样你的项目就建立成功了，如下图所示 ：
+\clearpage
+\begin{figure}[htpd]
+ \centering
+ \includegraphics[scale=0.6]{redmine-git.jpg}
+ \caption{redmine-git示例}
+\end{figure}
+
+\subsubsection{从服务器上克隆项目}
+
+这里我们以付强在服务器上建立的项目fq.git为例，如果想将服务器上名称为fq.git克隆到自己的主机，可以执行下面的操作。
+\begin{lstlisting}
+  $git clone nlpgit@114.212.189.55:/home/nlpgit/git/project.git
+\end{lstlisting}
+
+其它共同操作参考git共同操作。
+

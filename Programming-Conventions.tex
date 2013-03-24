@@ -1,0 +1,64 @@
+% !TEX TS-program = XeLaTeX
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt, a4paper, openany, twoside]{book}
+
+% 字体配置文件
+\input{setup/fonts}
+
+% 宏包配置文件
+\input{setup/packages}
+
+% 格式文件
+\input{setup/format}
+
+\begin{document}
+
+% 定义所有的图片文件在 figures 子目录下
+\graphicspath{{figures/}}
+
+% 前言
+\frontmatter
+\pagenumbering{Roman}
+\input{preface/cover}  % 封面
+%\originality           % 独创性
+%\makeabstract
+
+% 设置目录字体和行间距
+\defaultmenufont
+% 目录
+\tableofcontents
+%\cleardoublepage
+% 插图目录
+\listoffigures
+% 表格目录
+% \listoftables
+
+%\defaultfont
+\mainmatter
+% 正文章节
+\defaultfont
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\include{body/chap00}
+\include{body/chap01}
+\include{body/chap02}
+\include{body/chap03}
+\include{body/chap04}
+\include{body/chap05}
+
+% 结论
+%\include{body/conclusion}
+%\cleardoublepage
+% \backmatter
+
+% 致谢
+\include{appendix/acknowledgements}
+
+% 参考文献
+\defaultfont
+\wuhao
+\bibliographystyle{zjugbno}
+\bibliography{body/reference}
+\addcontentsline{toc}{chapter}{参考文献}
+\cleardoublepage
+\end{document}
